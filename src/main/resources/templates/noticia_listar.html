@@ -11,7 +11,8 @@
 <div class="container">
   <div class="title"><h1> Noticias </h1></div>
   <div>
-    <a th:href="@{/noticia/novanoticia}">Adicionar uma noticia</a>
+    <a th:href="@{/noticia/novanoticia}" class="btn btn-primary">Adicionar uma noticia</a>
+    <a th:href="@{/}" class="btn btn-primary">Voltar Inicio</a>
   </div>
   <div class="row">
     <div class="col-sm-3" th:each="noticia : ${noticias}">
@@ -21,8 +22,8 @@
           <h5 class="card-title" th:text="${noticia.titulo}">t</h5>
         </div>
         <div class="card-body">
-          <a th:href="@{/noticia/editarnoticia/{id}(id=${noticia.id})}">Editar</a>
-          <a th:href="@{/noticia/removernoticia/{id}(id=${noticia.id})}" onclick="return confirm('Tem certeza que deseja excluir essa noticia?')">Excluir</a>
+          <a th:href="@{/noticia/editarnoticia/{id}(id=${noticia.id})}" class="btn btn-success">Editar</a>
+          <a th:href="@{/noticia/removernoticia/{id}(id=${noticia.id})}" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir essa noticia?')">Excluir</a>
         </div>
       </div>
     </div>

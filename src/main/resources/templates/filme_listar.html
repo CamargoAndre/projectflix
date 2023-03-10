@@ -10,7 +10,7 @@
     <body>
     <div class="container">
         <h1>Lista de Filmes</h1>
-        <div class="card mb-3" th:each="filme : ${filmes}" style="max-width: 540px;">
+        <div class="card mb-6" th:each="filme : ${filmes}" style="max-width: 540px;">
             <div class="row g-0">
                 <div class="col-md-4">
                     <img th:src="@{${filme.imagem}}" class="img-fluid rounded-start" alt="image not found">
@@ -19,46 +19,38 @@
                     <div class="card-body">
                         <h5 class="card-title" th:text="${filme.titulo}"></h5>
                         <p class="card-text" th:text="${filme.descricao}"></p>
+                        <p class="card-text" th:text="${filme.imdb}">/10</p>
                         <p class="card-text"><small class="text-muted" th:text="${filme.genero}"></small></p>
-                        <p class="card-text"><a th:href="@{/filme/editarfilme/{id}(id=${filme.id})}">Editar</a></p>
-                        <p class="card-text"><a th:href="@{/filme/removerfilme/{id}(id=${filme.id})}" onclick="return confirm('Tem certeza que deseja excluir este produto?')">Excluir</a></p>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-borderless">
+                            <thead>
+                                <tr>
+                                    <th><a th:href="@{/filme/darlike/{id}(id=${filme.id})}">Like</a></th>
+                                    <th><a th:href="@{/filme/dardislike/{id}(id=${filme.id})}">Dislike</a></th>
+                                </tr>
+                            </thead>
+                           <tbody>
+                                <tr>
+                                    <td th:text="${filme.like}"></td>
+                                    <td th:text="${filme.dislike}"></td>
+                                </tr>
+                           </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer">
+                        <p class="card-text"><a class="btn btn-success" th:href="@{/filme/editarfilme/{id}(id=${filme.id})}" >Editar</a></p>
+                        <p class="card-text"><a class="btn btn-danger" th:href="@{/filme/removerfilme/{id}(id=${filme.id})}" onclick="return confirm('Tem certeza que deseja excluir este produto?')">Excluir</a></p>
 
                     </div>
                 </div>
+
             </div>
 
         </div>
-        <table>
-            <thead>
-            <tr>
-                <th>Titulo</th>
-                <th>Genero</th>
-                <th>Duracao</th>
-                <th>Sinopse</th>
-                <th>Like</th>
-                <th>Dislike</th>
-                <th>imagem</th>
-                <th>Editar</th>
-                <th>Remover</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="filme : ${filmes}">
-                <td th:text="${filme.titulo}"></td>
-                <td th:text="${filme.genero}"></td>
-                <td th:text="${filme.duracao}"></td>
-                <td th:text="${filme.descricao}"></td>
-                <td th:text="${filme.like}"></td>
-                <td><a th:href="@{/filme/darlike/{id}(id=${filme.id})}">Like</a></td>
-                <td th:text="${filme.dislike}"></td>
-                <td><a th:href="@{/filme/dardislike/{id}(id=${filme.id})}">Dislike</a></td>
-                <td><img th:src="@{${filme.imagem}}" width="210" height="300"></td>
-                <td><a th:href="@{/filme/editarfilme/{id}(id=${filme.id})}">Editar</a></td>
-                <td><a th:href="@{/filme/removerfilme/{id}(id=${filme.id})}" onclick="return confirm('Tem certeza que deseja excluir este produto?')">Excluir</a></td>
-            </tr>
-            </tbody>
-        </table>
-        <a th:href="@{/filme/novofilme}">Adicionar novo filme</a>
+        <div class=""></div>
+        <a th:href="@{/filme/novofilme}"  class="btn btn-primary">Adicionar novo filme</a>
+        <a th:href="@{/}"  class="btn btn-primary">Voltar para Inicio</a>
 
     </div>
 
