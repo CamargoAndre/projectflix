@@ -9,11 +9,31 @@
 </head>
 <body>
 <div class="container">
+  <div class="title"><h1> Noticias </h1></div>
+  <div>
+    <a th:href="@{/noticia/novanoticia}">Adicionar uma noticia</a>
+  </div>
+  <div class="row">
+    <div class="col-sm-3" th:each="noticia : ${noticias}">
+      <div class="card" style="width: 18rem;">
+        <img th:src="@{${noticia.imagem}}" class="card-img-top" alt="image not found">
+        <div class="card-body">
+          <h5 class="card-title" th:text="${noticia.titulo}">t</h5>
+        </div>
+        <div class="card-body">
+          <a th:href="@{/noticia/editarnoticia/{id}(id=${noticia.id})}">Editar</a>
+          <a th:href="@{/noticia/removernoticia/{id}(id=${noticia.id})}" onclick="return confirm('Tem certeza que deseja excluir essa noticia?')">Excluir</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
 
 
 </body>

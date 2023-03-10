@@ -1,11 +1,14 @@
 package br.com.ada.projectflix.model;
 
+import java.time.LocalDate;
+
 public class Noticia {
 
     private int id;
     private String titulo;
     private String imagem;
     private String autor;
+    private String texto;
 
     public int getId() {
         return id;
@@ -38,4 +41,14 @@ public class Noticia {
     public void setAutor(String autor) {
         this.autor = autor;
     }
+
+    public String getTexto() {
+        return texto;
+    }
+
+    public void setTexto(String texto) {
+        this.texto = texto;
+    }
+
+
 }
